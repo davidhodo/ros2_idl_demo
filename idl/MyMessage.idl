@@ -1,5 +1,5 @@
-#include "OtherMessage.idl"
-#include <pkgname/msg/OtherMessage.idl>
+//#include "OtherMessage.idl"
+//#include <pkgname/msg/OtherMessage.idl>
 
 module rosidl_parser {
   module msg {
@@ -25,7 +25,6 @@ module rosidl_parser {
       unsigned long long unsigned_long_long_value;
       float float_value;
       double double_value;
-      long double long_double_value;
       char char_value;
       wchar wchar_value;
       boolean boolean_value;
@@ -42,7 +41,7 @@ module rosidl_parser {
       string<5> bounded_string_value;
       wstring wstring_value;
       wstring<23> bounded_wstring_value;
-      wstring<UNSIGNED_LONG_CONSTANT> constant_bounded_wstring_value;
+      //wstring<UNSIGNED_LONG_CONSTANT> constant_bounded_wstring_value;
       sequence<short> unbounded_short_values;
       sequence<short, 5> bounded_short_values;
       sequence<string<3>> unbounded_values_of_bounded_strings;
