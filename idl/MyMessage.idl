@@ -1,15 +1,15 @@
 //#include "OtherMessage.idl"
 //#include <pkgname/msg/OtherMessage.idl>
 
-module rosidl_parser {
-  module msg {
+module idl_msgs{
+  module idl {
     module MyMessage_Constants {
       const short SHORT_CONSTANT = -23;
       const unsigned long UNSIGNED_LONG_CONSTANT = 42;
       const float FLOAT_CONSTANT = 1.25;
       const boolean BOOLEAN_CONSTANT = TRUE;
       const string STRING_CONSTANT = "string_value";
-      const wstring WSTRING_CONSTANT = "wstring_value_\u2122";
+      //const wstring WSTRING_CONSTANT = "wstring_value_\u2122";
     };
 
     @verbatim ( language="comment", text="Documentation of MyMessage." )
@@ -26,7 +26,7 @@ module rosidl_parser {
       float float_value;
       double double_value;
       char char_value;
-      wchar wchar_value;
+      //wchar wchar_value;
       boolean boolean_value;
       octet octet_value;
       int8 int8_value;
@@ -39,8 +39,8 @@ module rosidl_parser {
       uint64 uint64_value;
       string string_value;
       string<5> bounded_string_value;
-      wstring wstring_value;
-      wstring<23> bounded_wstring_value;
+      //wstring wstring_value;
+      //wstring<23> bounded_wstring_value;
       //wstring<UNSIGNED_LONG_CONSTANT> constant_bounded_wstring_value;
       sequence<short> unbounded_short_values;
       sequence<short, 5> bounded_short_values;
