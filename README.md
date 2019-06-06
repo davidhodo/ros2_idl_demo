@@ -14,8 +14,18 @@ This package demonstrates the ability to generate ROS messages directly from an 
 
 Build the package by running:
 
-    mkdir -p idl_msg_ws/src
-    cd idl_msg_ws/src
-    git clone https://github.com/davidhodo/idl_msgs.git
+    mkdir -p idl_demo_ws/src
+    cd idl_demo_ws/src
+    git clone https://github.com/davidhodo/ros2_idl_demo.git
     cd ../
     colcon build
+
+## Running
+
+Run the publisher:
+
+  ros2 run idl_pub idl_pub
+
+Run the subscriber:
+
+  ros2 run idl_sub idl_sub
