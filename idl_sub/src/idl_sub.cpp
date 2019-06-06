@@ -16,24 +16,31 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "idl_msgs/idl/timestamp.hpp"
+#include "idl_msgs/idl/string_msg.hpp"
 using std::placeholders::_1;
 
 class MinimalSubscriber : public rclcpp::Node
 {
 public:
   MinimalSubscriber()
-  : Node("idl_subscriber")
+  : Node("idl_string_subscriber")
   {
-    subscription_ = this->create_subscription<idl_msgs::idl::Timestamp>(
-      "/timestamp", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+    // subscription_ = this->create_subscription<idl_msgs::idl::Timestamp>(
+    //   "/timestamp", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+
+    subscription_ = this->create_subscription<idl_msgs::idl::StringMsg>(
+      "/chatter", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
   }
 
 private:
-  void topic_callback(const idl_msgs::idl::Timestamp::SharedPtr msg)
+  void topic_callback(const idl_msgs::idl::StringMsg::SharedPtr msg)
   {
-    RCLCPP_INFO(this->get_logger(), "Time: '%i'", msg->sec);
+    //RCLCPP_INFO(this->get_logger(), "Time: '%i'", msg->sec);
+    RCLCPP_INFO(this->get_logger(), "String: '%s'", msg->var_string.c_str());
+
   }
-  rclcpp::Subscription<idl_msgs::idl::Timestamp>::SharedPtr subscription_;
+  //rclcpp::Subscription<idl_msgs::idl::Timestamp>::SharedPtr subscription_;
+  rclcpp::Subscription<idl_msgs::idl::StringMsg>::SharedPtr subscription_;
 };
 
 int main(int argc, char * argv[])

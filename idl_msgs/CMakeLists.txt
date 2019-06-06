@@ -15,6 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
   "idl/Timestamp.idl"
+  "idl/StringMsg.idl"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

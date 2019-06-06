@@ -1,0 +1,7 @@
+module idl_msgs{
+  module idl {
+    struct StringMsg {
+        string var_string;
+    };
+  };
+};

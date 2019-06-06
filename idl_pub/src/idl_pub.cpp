@@ -17,6 +17,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "idl_msgs/idl/timestamp.hpp"
+#include "idl_msgs/idl/string_msg.hpp"
 
 using namespace std::chrono_literals;
 
@@ -27,9 +28,10 @@ class MinimalPublisher : public rclcpp::Node
 {
 public:
   MinimalPublisher()
-  : Node("idl_test_publisher"), sec_(0)
+  : Node("idl_string_publisher")//, sec_(0)
   {
-    publisher_ = this->create_publisher<idl_msgs::idl::Timestamp>("timestamp", 10);
+    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", 10);
+    //publisher_ = this->create_publisher<idl_msgs::idl::Timestamp>("timestamp", 10);
     timer_ = this->create_wall_timer(
       500ms, std::bind(&MinimalPublisher::timer_callback, this));
   }
@@ -37,15 +39,20 @@ public:
 private:
   void timer_callback()
   {
-    auto message = idl_msgs::idl::Timestamp();
-    message.sec = sec_++;
-    message.ns = 23;
-    RCLCPP_INFO(this->get_logger(), "Publishing timestamp");
+    // auto message = idl_msgs::idl::Timestamp();
+    // message.sec = sec_++;
+    // message.ns = 23;
+    // RCLCPP_INFO(this->get_logger(), "Publishing timestamp");
+
+    auto message = idl_msgs::idl::StringMsg();
+    message.var_string = "Hello";
+    RCLCPP_INFO(this->get_logger(), "Publishing string");
     publisher_->publish(message);
   }
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<idl_msgs::idl::Timestamp>::SharedPtr publisher_;
-  long long sec_;
+  //rclcpp::Publisher<idl_msgs::idl::Timestamp>::SharedPtr publisher_;
+  rclcpp::Publisher<idl_msgs::idl::StringMsg>::SharedPtr publisher_;
+  //long long sec_;
 };
 
 int main(int argc, char * argv[])
