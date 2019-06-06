@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>ros2_idl_demo</name>
+  <version>0.1.0</version>
+  <description>Testing ROS2 IDL message generation.</description>
+  <maintainer email="david.hodo@gmail.com">David Hodo</maintainer>
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>idl_msgs</exec_depend>
+  <exec_depend>idl_pub</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

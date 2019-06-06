@@ -1,0 +1,8 @@
+module idl_msgs{
+  module idl {
+    struct Timestamp {
+        long long sec;
+        long ns;
+    };
+  };
+};
