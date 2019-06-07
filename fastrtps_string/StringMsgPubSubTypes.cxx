@@ -34,8 +34,7 @@ namespace idl_msgs
     {
         StringMsgPubSubType::StringMsgPubSubType()
         {
-            //setName("idl_msgs/idl/StringMsg");
-            setName("idl_msgs::idl::dds_::StringMsg_"); // gean test
+            setName("idl_msgs::idl::dds_::StringMsg_");
             
             m_typeSize = static_cast<uint32_t>(StringMsg::getMaxCdrSerializedSize()) + 4 /*encapsulation*/;
             m_isGetKeyDefined = StringMsg::isKeyDefined();

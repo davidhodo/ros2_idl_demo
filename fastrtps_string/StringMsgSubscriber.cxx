@@ -42,7 +42,7 @@ bool StringMsgSubscriber::init()
     ParticipantAttributes PParam;
     PParam.rtps.builtin.domainId = 0; //MUST BE THE SAME AS IN THE PUBLISHER
     PParam.rtps.builtin.leaseDuration = c_TimeInfinite;
-    PParam.rtps.setName("Participant_subscriber"); //You can put the name you want
+    PParam.rtps.setName("epro_subscriber"); //You can put the name you want
     mp_participant = Domain::createParticipant(PParam);
     if(mp_participant == nullptr)
     {
@@ -94,7 +94,8 @@ void StringMsgSubscriber::SubListener::onNewDataMessage(Subscriber* sub)
         {
             // Print your structure data here.
             ++n_msg;
-            std::cout << "Sample received, count=" << n_msg << std::endl;
+            std::cout<<"Sample received, count="<<n_msg
+                     <<" "<<st.var_string()<<std::endl;
         }
     }
 }
