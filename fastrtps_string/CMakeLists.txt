@@ -19,5 +19,8 @@ add_executable(StringMsg StringMsgPubSubTypes.cxx StringMsgPublisher.cxx StringM
 target_link_libraries(StringMsg fastcdr fastrtps
         StringMsg_lib )
 
-
+install(TARGETS
+        StringMsg
+        DESTINATION lib/${PROJECT_NAME}
+)
 

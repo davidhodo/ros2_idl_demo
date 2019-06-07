@@ -19,5 +19,9 @@ add_executable(Timestamp TimestampPubSubTypes.cxx TimestampPublisher.cxx Timesta
 target_link_libraries(Timestamp fastcdr fastrtps
         Timestamp_lib )
 
-
+install(TARGETS
+        Timestamp
+        DESTINATION lib/${PROJECT_NAME}
+)
+      
 
