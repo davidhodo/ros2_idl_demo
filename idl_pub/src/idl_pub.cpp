@@ -18,7 +18,6 @@
 #include "rclcpp/rclcpp.hpp"
 #include "idl_msgs/idl/timestamp.hpp"
 #include "idl_msgs/idl/string_msg.hpp"
-#include "rmw/qos_profiles.h"
 
 using namespace std::chrono_literals;
 
@@ -31,8 +30,7 @@ public:
   MinimalPublisher()
   : Node("idl_string_publisher")//, sec_(0)
   {
-//gean    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", 10);
-    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", rmw_qos_profile_sensor_data);
+    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", 10);
 
     //publisher_ = this->create_publisher<idl_msgs::idl::Timestamp>("timestamp", 10);
     timer_ = this->create_wall_timer(
@@ -48,7 +46,7 @@ private:
     // RCLCPP_INFO(this->get_logger(), "Publishing timestamp");
 
     auto message = idl_msgs::idl::StringMsg();
-    message.var_string = "Hello";
+    message.var_string = "ROS2: Hello";
     RCLCPP_INFO(this->get_logger(), "Publishing string");
     publisher_->publish(message);
   }
