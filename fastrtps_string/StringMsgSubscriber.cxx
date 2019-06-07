@@ -64,12 +64,17 @@ bool StringMsgSubscriber::init()
     {
         return false;
     }
+
+    std::cout << "Subscriber created of type: " << Rparam.topic.topicDataType << " on topic: " 
+        << Rparam.topic.topicName << std::endl;
     return true;
 }
 
 void StringMsgSubscriber::SubListener::onSubscriptionMatched(Subscriber* sub,MatchingInfo& info)
 {
     (void)sub;
+
+    std::cout << "Match: " << info.status << " Endpoint: " << info.remoteEndpointGuid << std::endl;
 
     if (info.status == MATCHED_MATCHING)
     {

@@ -70,7 +70,8 @@ bool StringMsgPublisher::init()
         return false;
     }
 
-    std::cout << "Publisher created, waiting for Subscribers." << std::endl;
+    std::cout << "Publisher created of type: " << Wparam.topic.topicDataType << " on topic: " 
+        << Wparam.topic.topicName << ", waiting for Subscribers." << std::endl;
     return true;
 }
 
