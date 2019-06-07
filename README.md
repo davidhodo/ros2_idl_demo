@@ -42,7 +42,7 @@ Run the eProsima subscriber:
 
 The example code in the fastrtps_string folder was generated using eProsima's fastrtps gen by running:
 
-  fastrtpsgen -example CMake ../idl_msgs/idl/StringMsg.idl
+    fastrtpsgen -example CMake ../idl_msgs/idl/StringMsg.idl
 
 In order to interoperate with the ROS2 publisher/subscriber the following changes must be made to the generated code.
 
