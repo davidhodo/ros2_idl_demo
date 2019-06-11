@@ -1,4 +1,5 @@
 # idl_msgs
+
 Test package for ROS2 idl message generation.
 
 This package demonstrates the ability to generate ROS messages directly from an IDL file.  An example IDL from the [rosidl](https://github.com/ros2/rosidl/tree/dashing/rosidl_parser) repository is used as a test.  The MyMessage.idl file was modified from the original to remove the long double and wchar entries.  The two example includes were also removed.  Finally the module names were changed to match the package name and message type.  i.e. rosidl\_parser -> idl\_msgs and msg -> idl.
@@ -46,5 +47,10 @@ The example code in the fastrtps_string folder was generated using eProsima's fa
 
 In order to interoperate with the ROS2 publisher/subscriber the following changes must be made to the generated code.
 
-* Change the topic name to "rt/chatter"
+* ~~Change the topic name to "rt/chatter"~~
+  * This branch, avoid_ros_namespace, tests setting the ROS QoS parameter *`avoid_ros_namespace_conenventions`* to true. When this parameter is set to *`true`*, the *`rt`* prefix for topic names in the Fast RTPS code is not needed.
 * Change the type name to idl_msgs::idl::dds_::StringMsg_
+
+# Known Bugs
+
+When the *`avoid_ros_namespace_conventions`* flag is set to `true`, eProsima Fast RTPS and ROS2 communicate fine, but `ros2 topic echo /chatter` does not work. A message stating that the type is unknown is returned.
