@@ -17,6 +17,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "idl_msgs/idl/timestamp.hpp"
 #include "idl_msgs/idl/string_msg.hpp"
+#include "rclcpp/qos.hpp"
 using std::placeholders::_1;
 
 class MinimalSubscriber : public rclcpp::Node
@@ -25,11 +26,14 @@ public:
   MinimalSubscriber()
   : Node("idl_string_subscriber")
   {
+    rclcpp::QoS qos_profile(10);
+    qos_profile.avoid_ros_namespace_conventions(true);
+
     // subscription_ = this->create_subscription<idl_msgs::idl::Timestamp>(
     //   "/timestamp", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
 
     subscription_ = this->create_subscription<idl_msgs::idl::StringMsg>(
-      "/chatter", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+      "/chatter", qos_profile, std::bind(&MinimalSubscriber::topic_callback, this, _1));
   }
 
 private:

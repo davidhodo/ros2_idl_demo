@@ -18,6 +18,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "idl_msgs/idl/timestamp.hpp"
 #include "idl_msgs/idl/string_msg.hpp"
+#include "rclcpp/qos.hpp"
 
 using namespace std::chrono_literals;
 
@@ -30,9 +31,10 @@ public:
   MinimalPublisher()
   : Node("idl_string_publisher")//, sec_(0)
   {
-    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", 10);
+    rclcpp::QoS qos_profile(10);
+    qos_profile.avoid_ros_namespace_conventions(true);
+    publisher_ = this->create_publisher<idl_msgs::idl::StringMsg>("chatter", qos_profile);
 
-    //publisher_ = this->create_publisher<idl_msgs::idl::Timestamp>("timestamp", 10);
     timer_ = this->create_wall_timer(
       500ms, std::bind(&MinimalPublisher::timer_callback, this));
   }

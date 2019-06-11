@@ -61,7 +61,7 @@ bool StringMsgPublisher::init()
     PublisherAttributes Wparam;
     Wparam.topic.topicKind = NO_KEY;
     Wparam.topic.topicDataType = myType.getName();  //This type MUST be registered
-    Wparam.topic.topicName = "rt/chatter";
+    Wparam.topic.topicName = "/chatter";
 
     mp_publisher = Domain::createPublisher(mp_participant,Wparam,static_cast<PublisherListener*>(&m_listener));
 
